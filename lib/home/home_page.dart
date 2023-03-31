@@ -3,18 +3,15 @@ import 'package:healthy_food/consts.dart';
 import 'package:healthy_food/widget/product_widget.dart';
 
 class HomePage extends StatefulWidget {
-final ProductWidget productWidget;
-  const HomePage({Key? key}) : super(key: key);
-
-  
+  const HomePage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,18 +74,25 @@ class _HomePageState extends State<HomePage> {
                     topLeft: Radius.circular(75),
                   ),
                 ),
-                child: ListView(
-                  primary: false,
-                  padding: const EdgeInsets.only(left: 25.0, right: 20.0),
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 45),
-                      child: Container(
-                        height: MediaQuery.of(context).size.height,
-                        child: ListView.builder(itemBuilder: (context, index) => ProductWidget(img: img, name: name, price: price))
-                      ),
-                    ),
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 45, left: 15),
+                  child: Container(
+                      margin: const EdgeInsets.all(12),
+                      height: MediaQuery.of(context).size.height,
+                      child: ListView.builder(
+                        itemBuilder: ((context, index) => SizedBox(
+                              height: 80,
+                              child: Card(
+                                elevation: 0,
+                                child: ProductWidget(
+                                  img: 'assets/plate1.jpeg',
+                                  name: 'Salmon Bowl',
+                                  price: 24,
+                                ),
+                              ),
+                            )),
+                        itemCount: 4,
+                      )),
                 ),
               ),
             ],

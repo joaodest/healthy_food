@@ -10,14 +10,16 @@ class ProductWidget extends ListTile {
       : super(
           trailing: IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.add, color: Colors.black,),
+            icon: const Icon(
+              Icons.add,
+              color: Colors.black,
+            ),
           ),
           leading: CircleAvatar(
-           backgroundImage: AssetImage(img),
-           radius: 30,
+            backgroundImage: AssetImage(img),
+            radius: 30,
           ),
           title: Text(name),
           subtitle: Text('\$ ${price.toStringAsFixed(2)}'),
         );
-        
 }
