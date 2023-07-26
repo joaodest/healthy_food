@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
 
-class ProductWidget extends ListTile {
-  final String img;
-  final String name;
-  final double price;
+import 'package:healthy_food/models/product_model.dart';
 
-  ProductWidget(
-      {super.key, required this.img, required this.name, required this.price})
-      : super(
-          trailing: IconButton(
+class ProductWidget extends StatelessWidget {
+
+  final ProductModel productModel;
+  final int id;
+
+  const ProductWidget({
+    Key? key,
+    required this.productModel,
+    required this.id,
+  }) : super(key: key);
+
+   @override
+   Widget build(BuildContext context) {
+       return ListTile(
+         trailing: IconButton(
             onPressed: () {},
             icon: const Icon(
               Icons.add,
@@ -16,10 +24,11 @@ class ProductWidget extends ListTile {
             ),
           ),
           leading: CircleAvatar(
-            backgroundImage: AssetImage(img),
+            backgroundImage: AssetImage(productModel.img),
             radius: 30,
           ),
-          title: Text(name),
-          subtitle: Text('\$ ${price.toStringAsFixed(2)}'),
+          title: Text(productModel.name),
+          subtitle: Text('\$ ${productModel.price.toStringAsFixed(2)}'),
         );
+  }
 }

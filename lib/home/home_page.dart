@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:healthy_food/consts.dart';
+import 'package:healthy_food/models/product_model.dart';
 import 'package:healthy_food/widget/product_widget.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatefulWidget {  
+
   const HomePage({
     Key? key,
   }) : super(key: key);
@@ -12,6 +14,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,20 +84,15 @@ class _HomePageState extends State<HomePage> {
                       margin: const EdgeInsets.all(12),
                       height: MediaQuery.of(context).size.height,
                       child: ListView.builder(
-                        itemBuilder: ((context, index) => SizedBox(
-                              height: 80,
-                              child: Card(
-                                elevation: 0,
-                                child: ProductWidget(
-                                  img: 'assets/plate1.jpeg',
-                                  name: 'Salmon Bowl',
-                                  price: 24,
-                                ),
-                              ),
-                            )),
-                        itemCount: 4,
-                      )),
+                      itemBuilder: ((context, index) {
+                        var productModel = ProductModel.selectProd(index);
+                        return ProductWidget(productModel: productModel, id: index);
+                      }),
+                      itemCount: 4,
+                    ),
+                      
                 ),
+              ),
               ),
             ],
           ),
