@@ -5,12 +5,10 @@ import 'package:healthy_food/models/product_model.dart';
 class ProductWidget extends StatelessWidget {
 
   final ProductModel productModel;
-  final int id;
 
   const ProductWidget({
     Key? key,
     required this.productModel,
-    required this.id,
   }) : super(key: key);
 
    @override

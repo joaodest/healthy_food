@@ -3,8 +3,7 @@ import 'package:healthy_food/consts.dart';
 import 'package:healthy_food/models/product_model.dart';
 import 'package:healthy_food/widget/product_widget.dart';
 
-class HomePage extends StatefulWidget {  
-
+class HomePage extends StatefulWidget {
   const HomePage({
     Key? key,
   }) : super(key: key);
@@ -14,8 +13,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  
-  
+
+  List<ProductModel> products = ProductModel.getProducts();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,18 +81,16 @@ class _HomePageState extends State<HomePage> {
                 child: Padding(
                   padding: const EdgeInsets.only(top: 45, left: 15),
                   child: Container(
-                      margin: const EdgeInsets.all(12),
-                      height: MediaQuery.of(context).size.height,
-                      child: ListView.builder(
-                      itemBuilder: ((context, index) {
-                        var productModel = ProductModel.selectProd(index);
-                        return ProductWidget(productModel: productModel, id: index);
-                      }),
-                      itemCount: 4,
+                    margin: const EdgeInsets.all(12),
+                    height: MediaQuery.of(context).size.height,
+                    child: ListView.builder(
+                      itemCount: products.length,
+                      itemBuilder: (context, index) {
+                        return ProductWidget(productModel: products[index]);                    
+                      },
                     ),
-                      
+                  ),
                 ),
-              ),
               ),
             ],
           ),
